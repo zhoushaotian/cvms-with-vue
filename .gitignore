@@ -1,0 +1,20 @@
+# files
+.git
+*.log
+*.zip
+
+# folders
+node_modules/*
+logs/*
+coverage/*
+public/*
+views/*
+
+app/
+Dockerfile
+c-depend.json
+config.json
+package-lock.json
+www
+.package_nodejs.sh
+.project.properties
