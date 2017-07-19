@@ -2,7 +2,9 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
-    entry: path.resolve(__dirname, 'app/build/main.js'),
+    entry: {
+        app: path.resolve(__dirname, 'app/build/main.js')
+    },
     output: {
         path: path.resolve(__dirname, 'app/public/static/js'),
         filename: 'app.min.js'
@@ -25,15 +27,27 @@ module.exports = {
             {
                 test: /\.(js)$/,
                 loader: 'babel-loader',
-                include: [path.resolve(__dirname, 'build')]
+                exclude: /node_modules/
             },
             {
                 test: /\.css$/,
-                loader: 'style-loader!css-loader?modules'
+                loader: 'style-loader!css-loader',
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                loader: 'file-loader',
+                query: {
+                    name: '../img/[name].[hash:7].[ext]'
+                }
+            },
+            {
+                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+                loader: 'file-loader',
             }
         ],
     },
     resolve: {
+        extensions: ['.js', '.vue', '.json'],
         alias: {
             'vue': 'vue/dist/vue.js'
         }
