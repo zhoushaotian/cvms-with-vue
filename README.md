@@ -10,4 +10,24 @@ build文件夹的结构与vuecli生成src目录结构一样。webpack打包生�
             'vue': 'vue/dist/vue.js'
         }
    }
-```
+```  
+### 提取vue单文件中的style到css文件  
+```json
+ {
+            test: /\.vue$/,
+            loader: 'vue-loader',
+            options: {
+            loaders: {
+                css: ExtractTextPlugin.extract({
+                    use: 'css-loader',
+                    fallback: 'vue-style-loader'
+                    }),
+                },
+            }
+
+}
+plugins: [
+    new ExtractTextPlugin('../css/appstyle.css')
+]
+```  
+另外需要安装 vue-template-compiler 
