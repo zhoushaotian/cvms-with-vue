@@ -7,7 +7,9 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'app/public/static/js'),
-        filename: 'app.min.js'
+        filename: '[name].bundle.js',
+        publicPath: '/js/',
+        chunkFilename: '[name].bundle.js'
     },
     module: {
         rules: [
