@@ -46,6 +46,36 @@ plugins: [
     "babel-loader": "^6.4.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+```  
+### 代码分离  
+使用webpack的requrie.ensure。  
+原理是当触发了某个异步加载的模块的时候，动态生成一个script标签来加载该模块依赖的js文件。webpack会自动把使用require.ensure加载
+的模块从之前打包的单独js文件中分离出来。  
+- 结合vue-router 异步加载组件  
+```
+//首先加载某个路由需要的组件
+const demo = resolve => {
+    require.ensure(['../components/demo'], () => {
+        resolve(require('../components/demo'));
+    });
+};
+
+//然后和使用普通组件一样
+export default new Router({
+    mode: 'history',
+    routes: [
+        {
+            path: '/client',
+            name: 'main',
+            component: main
+        },
+        {
+            path: '/client/demo',
+            name: 'demo',
+            component: demo
+        }
+    ]
+});
 ```
 
 
