@@ -43,6 +43,9 @@ module.exports = {
             {
                 test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
                 loader: 'file-loader',
+                query: {
+                    name: '../font/[name].[hash:7].[ext]'
+                }
             }
         ],
     },

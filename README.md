@@ -31,3 +31,21 @@ plugins: [
 ]
 ```  
 另外需要安装 vue-template-compiler 
+### babel配置  
+```json
+{
+    "presets": [
+        "es2015",
+        "stage-2"
+    ]
+}
+```  
+需要安装依赖  
+```
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+```
+
+
